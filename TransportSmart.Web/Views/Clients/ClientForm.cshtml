@@ -1,0 +1,115 @@
+﻿
+@model DataContracts.Clients
+
+<link href="~/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<script src="~/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<div class="col-12">
+    <div class="card">
+        <form class="form-horizontal">
+            <div class="card-body">
+                <h4 class="card-title" style="text-align:right">معلومات العميل</h4>
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">إسم العميل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtClientName" placeholder="" value="@Model.ClientName">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">عنوان العميل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtClientAddress" placeholder="" value="@Model.ClientAddress">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">نوع العميل</label>
+                    <div class="col-sm-3">
+                        <select class="select2 form-control custom-select" id="ddlClientType" style="width: 100%; height:36px;">
+                            <option value="0">حدد نوع العميل</option>
+                            <option value="1">شركة</option>
+                            <option value="2">فرد</option>
+                            <option value="3">سائق</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">الشخص المخول</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtAuthorizedPerson" placeholder="" value="@Model.AuthorizedPerson">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">البريد الإلكتروني</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtEmail" placeholder="" value="@Model.Email">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">رقم الهاتف</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtTelNumber" placeholder="" value="@Model.TelNumber">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">رقم الهاتف المحمول</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtPhoneNumber" placeholder="" value="@Model.PhoneNumber">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">رقم الهاتف المحمول</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtPhoneNumber1" placeholder="" value="@Model.PhoneNumber1">
+                    </div>
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">الرقم الضريبي</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtTaxNumber" placeholder="" value="@Model.TaxNumber">
+                    </div>
+                </div>
+            </div>
+            <div class="border-top">
+                <div class="card-body">
+                    <div class="row">
+                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-primary col-md-3">حفظ</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    $("#btnSubmit").click(function (e) {
+        debugger;
+        e.preventDefault();
+        var formData = new FormData();
+     
+        formData.append('ClientName', $("#txtClientName").val());
+        formData.append('ClientAddress', $("#txtClientAddress").val());
+        formData.append('ClientType', $("#ddlClientType").val());
+        formData.append('AuthorizedPerson', $("#txtAuthorizedPerson").val());
+        formData.append('Email', $("#txtEmail").val());
+        formData.append('TelNumber', $("#txtTelNumber").val());
+        formData.append('PhoneNumber', $("#txtPhoneNumber").val());
+        formData.append('PhoneNumber1', $("#txtPhoneNumber1").val());
+        formData.append('TaxNumber', $("#txtTaxNumber").val());
+     
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            url: "/Clients/Save/",
+            data: formData,
+            processData: false,
+            success: function (Data) {
+                $("#myModal").modal("hide");
+                $('.ClientForm').html("");
+                location.reload();
+            },
+            Error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    });
+</script>

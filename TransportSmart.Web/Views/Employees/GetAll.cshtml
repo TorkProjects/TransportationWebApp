@@ -1,0 +1,338 @@
+﻿@model IEnumerable<DataContracts.Employee>
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetAll</h2>
+
+<p>
+    <button type="button" class="btn btn-default" onclick="EmpPartial(0)">Create New</button>
+</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:right">كشف الموظفين</h5>
+                    <div class="row" style="padding:1.25rem">
+                        <button type="button" class="btn btn-dark btn-md col-md-3" onclick="EmpPartial(0)"><i class="m-r-10 mdi mdi-account-plus"></i> إضافة موظف </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="zero_config" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th>   رقم الموظف     </th>
+                                    <th> الاسم الكامل</th>
+                                    <th> الجنسية            </th>
+                                    <th> المهنة             </th>
+                                    <th> رقم الإقامة         </th>
+                                    <th> إنتهاء الإقامة      </th>
+                                    <th> رقم البطاقة        </th>
+                                    <th> إنتهاء البطاقة    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>عبدالحميد ترك</td>
+                                    <td>فلسطيني</td>
+                                    <td>مبرمج</td>
+                                    <td>011101111</td>
+                                    <td>12/12/2019</td>
+                                    <td>06164646</td>
+                                    <td>12/12/2019</td>
+                                    <td>
+                                        <div class="row">
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left:5px;margin-left:5px;">تعديل</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">حذف</button>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="page-breadcrumb" dir="rtl">
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <button type="button" class="close col-2" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="card-title col-8" style="text-align:center">أضافة موظف</h4>
+                    <h4 class="card-title col-2" style="text-align:center"></h4>
+                </div>
+
+                <div class="modal-body EmpForm">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="../../dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="../../dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="../../dist/js/custom.min.js"></script>
+<!-- this page js -->
+@*<script src="../../assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>*@
+
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="../../dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="../../dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="../../dist/js/custom.min.js"></script>
+<!-- This Page JS -->
+<script src="../../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+@*<script src="../../dist/js/pages/mask/mask.init.js"></script>*@
+<script src="../../assets/libs/select2/dist/js/select2.full.min.js"></script>
+<script src="../../assets/libs/select2/dist/js/select2.min.js"></script>
+<script src="../../assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+<script src="../../assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+<script src="../../assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+<script src="../../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+<script src="../../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../assets/libs/quill/dist/quill.min.js"></script>
+
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="../../dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="../../dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="../../dist/js/custom.min.js"></script>
+<!-- This Page JS -->
+<script src="../../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+@*<script src="../../dist/js/pages/mask/mask.init.js"></script>*@
+<script src="../../assets/libs/select2/dist/js/select2.full.min.js"></script>
+<script src="../../assets/libs/select2/dist/js/select2.min.js"></script>
+<script src="../../assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+<script src="../../assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+<script src="../../assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+<script src="../../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+@*<script src="../../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>*@
+<script src="../../assets/libs/quill/dist/quill.min.js"></script>
+<script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
+<script src="../../assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+<script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
+<script>
+
+    $.ajax({
+        type: "POST",
+        url: "/Employees/GetListOfEmployee/",
+       // data: JSON.stringify({ OutletId: 1, IsActive: true }),
+        contentType: "application/json",
+        datatype: "json",
+        async: false,
+        success: function (response) {
+            debugger;
+            if (response.Success) {
+                var oTable = $('#zero_config').DataTable({
+                    destroy: true,
+                    data: response.listOfEmployee,
+                    dom: '<i<t><"pull-right"B>>',
+                    "lengthChange": false,
+                    iDisplayLength: -1,
+                    "columns": [
+                        { "data": "EmployeeId" },
+                        { "data": "Name" },
+                        { "data": "Nationality" },
+                        { "data": "" },
+                        { "data": "ResidenceNumber" },
+                        { "data": "" },
+                        { "data": "" },
+                        { "data": "" },
+                        {
+                            "data": "data",
+                            render: function (data, type, row) {
+                                var string = "<a id='lnkEdit' onclick=EmpPartial(" + row.EmployeeId+") ><span class='fa fa-edit'></span> </a> ";
+                              //  if (row.IsActive) {
+                                    string += "<a id='lnkDelete'  onclick=DeleteEmp("+row.EmployeeId+")><span class='fa fa-trash-o'>X</span></a>";
+                               // }
+                                return string;
+                            }
+                        }
+                    ],
+                    "searching": true
+                });
+
+                $('#myInputTextSearchField').keyup(function () {
+                    oTable.search($(this).val()).draw();
+                });
+            } else {
+                console.log(response.ExceptionMessage);
+            }
+        }
+    });
+        /*datwpicker*/
+        $("#btnSubmit").click(function () {
+            debugger;
+            var flcopyofpassport = $('#flcopyofpassport').get(0).files[0];
+            var flresidencecopy = $('#flresidencecopy').get(0).files[0];
+            var flfrontfaceforEmiratesID = $('#flfrontfaceforEmiratesID').get(0).files[0];
+            var flbackfaceforEmiratesID = $('#flbackfaceforEmiratesID').get(0).files[0];
+            var formData = new FormData();
+            formData.append('Name', $("#txtfname").val());
+            formData.append('Nationality', $("#ddlnationality").val());
+            formData.append('Passportnumber', $("#txtpassportnumber").val());
+            formData.append('Placeofissue', $("#txtplaceofissue").val());
+            formData.append('Dateofissue', $("#caldateofissue").val());
+            formData.append('Expirydate', $("#calexpirydate").val());
+            formData.append('Bob', $("#calbob").val());
+            formData.append('copyofpassport', flcopyofpassport);
+            formData.append('Residencenumber', $("#txtresidencenumber").val());
+            formData.append('Unifiednumber', $("#txtunifiednumber").val());
+            formData.append('Dateofissuance', $("#caldateofissuance").val());
+            formData.append('Expirationofresidence', $("#calexpirationofresidence").val());
+            formData.append('Residencecopy', flresidencecopy);
+            formData.append('Laborcardnumber', $("#txtlaborcardnumber").val());
+            formData.append('Laborcardexpirydate', $("#callaborcardexpirydate").val());
+            formData.append('EmiratesIDnumber', $("#txtemiratesIDnumber").val());
+            formData.append('EmiratesIDexpirydate', $("#calemiratesIDexpirydate").val());
+            formData.append('FrontfaceforEmiratesID', flfrontfaceforEmiratesID);
+            formData.append('BackfaceforEmiratesID', flbackfaceforEmiratesID);
+            $.ajax({
+                type: "POST",
+                contentType: false,
+                url: "/Employees/Save/",
+                data: formData,
+                processData: false,
+                success: function (Data) {
+
+                },
+                Error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        });
+        jQuery(document).ready(function () {
+           // debugger
+            //jQuery('#calemiratesIDexpirydate').datepicker({
+            //    autoclose: true,
+            //    todayHighlight: true
+            //});
+        });
+        //jQuery('.mydatepicker').datepicker();
+
+
+        jQuery('#zero_config').DataTable().makeEditable();
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function () {
+            //
+            // Dear reader, it's actually very easy to initialize MiniColors. For example:
+            //
+            //  $(selector).minicolors();
+            //
+            // The way I've done it below is just for the demo, so don't get confused
+            // by it. Also, data- attributes aren't supported at this time...they're
+            // only used for this demo.
+            //
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+    });
+
+    function EmpPartial(empid) {
+        $.ajax({
+            url: '@Url.Action("EmpForm")?EmpId=' + empid    ,
+            type: 'GET',
+            error: function (xhr) {
+                alert('Error: ' + xhr.statusText);
+            },
+            success: function (result) {
+                debugger;
+                $("#myModal").modal("show");
+                $('.EmpForm').html(result);
+            }
+            });
+    }
+
+    function DeleteEmp(empid) {
+        if (confirm("Do you really want to delete Employee?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteEmp")?EmpId=' + empid,
+                type: 'GET',
+                error: function (xhr) {
+                    alert('Error: ' + xhr.statusText);
+                },
+                success: function (result) {
+                    if (result) {
+                        alert("Delete Employee Successfully");
+                        location.reload();
+                    }
+                    else {
+                        alert("There is some problem.");
+                    }
+                }
+            });
+        }
+    }
+</script>

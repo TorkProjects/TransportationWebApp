@@ -1,0 +1,166 @@
+﻿
+@model DataContracts.Bond
+
+<link href="~/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+
+<div class="col-12">
+    <div class="card">
+        <form class="form-horizontal">
+            <div class="card-body">
+                <h4 class="card-title" style="text-align:right">المصروفات</h4>
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">رقم السند</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBondNo" placeholder="" value="@Model.BondNo">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">التاريخ</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="datepickerBondDateautoclose" placeholder="" value="@Model.BondDate">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">إسم العميل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtClientID" placeholder="" value="@Model.ClientID">
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label"> المبلغ أرقام</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtAmountNo" placeholder="" value="@Model.AmountNo">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">المبلغ كتابة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtAmountText" placeholder="" value="@Model.AmountText">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">نوع السند</label>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="custom-control custom-radio col-md-4">
+                                <label class="custom-control-label">كاش</label>
+                                <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked">
+                            </div>
+                            <div class="custom-control custom-radio col-md-4">
+                                <label class="custom-control-label">شيك</label>
+                                <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked">
+                            </div>
+                            <div class="custom-control custom-radio col-md-4">
+                                <label class="custom-control-label">حوالة</label>
+                                <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">رقم الشيك</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtCheckNo" placeholder="" value="@Model.CheckNo">
+                    </div>
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">البنك المسحوب عليه</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBankName" placeholder="" value="@Model.BankName">
+                    </div>
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">التفاصيل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtNote" placeholder="" value="@Model.Note">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">مكتب الصرافة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtExchangeOfficeName" placeholder="" value="@Model.ExchangeOfficeName">
+                    </div>
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">التفاصيل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtNote1" placeholder="" value="@Model.Note">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">التفاصيل</label>
+                    <div class="col-sm-3">
+                        <input  type="text" class="form-control" id="txtNote2" placeholder="" value="@Model.Note">
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="border-top">
+                <div class="card-body">
+                    <button id="btnSubmit" type="button" class="btn btn-primary">حفظ</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="~/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  
+
+    
+     $("#btnSubmit").click(function (e) {
+        debugger;
+        e.preventDefault();
+        var formData = new FormData();
+     
+        formData.append('BondNo', $("#txtBondNo").val());
+        formData.append('BondDate', $("#datepickerBondDateautoclose").val());
+        formData.append('ClientID', $("#txtClientID").val());
+        formData.append('AmountNo', $("#txtAmountNo").val());
+        formData.append('AmountText', $("#txtAmountText").val());
+
+        formData.append('CheckNo', $("#txtCheckNo").val());
+        formData.append('BankName', $("#txtBankName").val());
+
+
+
+         //check with note fill 
+         if ($.trim($('#txtNote').val()) != "") {
+             formData.append('Note', $("#txtNote").val());
+         }
+         else if ($.trim('#txtNote1').val() != "") {
+             formData.append('Note', $("#txtNote1").val());
+         }
+         else if ($.trim('txtNote2').val() != "") {
+             formData.append('Note', $("#txtNote2").val());
+         }
+         else {
+             formData.append('Note', "");
+         }
+  
+        formData.append('ExchangeOfficeName', $("#txtExchangeOfficeNameNote").val());
+     
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            url: "/Exchange/Save/",
+            data: formData,
+            processData: false,
+            success: function (Data) {
+                $("#myModal").modal("hide");
+                $('.ClientForm').html("");
+                location.reload();
+            },
+            Error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    });
+
+</script>

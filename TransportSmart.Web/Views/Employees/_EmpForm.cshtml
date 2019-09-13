@@ -1,0 +1,316 @@
+﻿@model DataContracts.Employee
+
+<link href="~/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+<div class="col-12">
+    <div class="card">
+        <form action="" class="form-horizontal" enctype="multipart/form-data" method="post">
+            <input type="hidden" id="EmployeeId" class="EmployeeId" name="EmployeeId" value="@Model.EmployeeId" />
+            @* @using (Html.BeginForm("Save", "Employees", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {*@
+            <div class="card-body">
+                <div class="p-2 ">
+                    <img style="display: block;margin-left: auto;margin-right: auto" src="../../assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle">
+                </div>
+                <h4 class="card-title" style="text-align:right">معلومات الموظف الشخصية</h4>
+                <div class="form-group row">
+                    <label for="txremplymentnumber" class="col-sm-1 text-right control-label col-form-label">رقم الموظف</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txremplymentnumber" name="txremplymentnumber" placeholder="Emplyment Number Here">
+                    </div>
+                    <label for="txtfname" class="col-sm-1 text-right control-label col-form-label">الاسم الكامل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtfname" name="txtfname" placeholder="Full Name Here" value="@Model.Name">
+                    </div>
+                    <label for="ddlnationality" class="col-sm-1 text-right control-label col-form-label">الجنسية</label>
+                    <div class="col-sm-3">
+                        <select class="select2 form-control custom-select" id="ddlnationality" name="ddlnationality" style="width: 100%; height:36px;">
+                            <option>Select</option>
+                            <optgroup label="">
+                                <option value="AZ">Arizona</option>
+                                <option value="CO">Colorado</option>
+                                <option value="ID">Idaho</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="UT">Utah</option>
+                                <option value="WY">Wyoming</option>
+
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TX">Texas</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="WI">Wisconsin</option>
+
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="IN">Indiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="OH">Ohio</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                        </select>
+
+                        @*<select class="select2 form-control custom-select" id="ddlnationality" name="ddlnationality" style="width: 100%; height:36px;">
+                                <option>Select</option>
+                                <option value="AKs">حدد جنسية الموظف</option>
+                                <option value="AKs">هندي</option>
+                                <option value="AK">باكستاني</option>
+                                <option value="HI">فلسطيني</option>
+                                <option value="HI">أردني</option>
+                                <option value="HI">سوري</option>
+                            </select>*@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtpassportnumber" class="col-sm-1 text-right control-label col-form-label">رقم جواز السفر</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control purchase-inputmask" id="txtpassportnumber" name="txtpassportnumber" placeholder="Enter Passport Number" value="@Model.PassportNumber">
+                    </div>
+                    <label for="txtplaceofissue" class="col-sm-1 text-right control-label col-form-label">مكان الإصدار</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtplaceofissue" name="txtplaceofissue" placeholder="Place of issue Here" value="@Model.Placeofissue">
+                    </div>
+
+                    <label for="caldateofissue" class="col-sm-1 text-right control-label col-form-label">تاريخ الإصدار</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="caldateofissue" name="caldateofissue" placeholder="mm/dd/yyyy" value="@Model.DateofIssue">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="calexpirydate" class="col-sm-1 text-right control-label col-form-label">تاريح الإنتهاء</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="calexpirydate" name="calexpirydate" placeholder="mm/dd/yyyy" value="@Model.ExpiryDate">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="calbob" class="col-sm-1 text-right control-label col-form-label">تاريخ ميلاد الموظف</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="calbob" name="calbob" placeholder="mm/dd/yyyy" value="@Model.DOB">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="flcopyofpassport" class="col-sm-1 text-right control-label col-form-label">صورة جواز السفر</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="flcopyofpassport" name="flcopyofpassport" required>
+                            <label class="custom-file-label" for="flcopyofpassport">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <img style="display:none" height="100" width="100" src="@Model.CopyofPassport" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title" style="text-align:right">معلومات الإقامة</h4>
+                <div class="form-group row">
+                    <label for="txtresidencenumber" class="col-sm-1 text-right control-label col-form-label">رقم الإقامة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtresidencenumber" name="txtresidencenumber" placeholder="Residence number Here" value="@Model.ResidenceNumber">
+                    </div>
+                    <label for="txtunifiednumber" class="col-sm-1 text-right control-label col-form-label">الرقم الموحد</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtunifiednumber" name="txtunifiednumber" placeholder="Unified number Here" value="@Model.UnifiedNumber">
+                    </div>
+
+                    <label for="caldateofissuance" class="col-sm-1 text-right control-label col-form-label">تاريخ إصدار الإقامة</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="caldateofissuance" name="caldateofissuance" placeholder="mm/dd/yyyy" value="@Model.DateofResidence">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="calexpirationofresidence" class="col-sm-1 text-right control-label col-form-label">تاريخ إنتهاء الإقامة</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="calexpirationofresidence" name="calexpirationofresidence" placeholder="mm/dd/yyyy" value="@Model.ExpirationofResidence">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="flresidencecopy" class="col-sm-1 text-right control-label col-form-label">صورة الإقامة</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="flresidencecopy" name="flresidencecopy" required>
+                            <label class="custom-file-label" for="flresidencecopy">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <img style="display:none" height="100" width="100" src="@Model.ResidenceCopy" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title" style="text-align:right">معلومات الهوية وبطاقة العمل</h4>
+                <div class="form-group row">
+                    <label for="txtlaborcardnumber" class="col-sm-1 text-right control-label col-form-label">رقم بطاقة العمل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtlaborcardnumber" name="txtlaborcardnumber" placeholder="Labor card number Here" value="@Model.LaborCardNumber">
+                    </div>
+                    <label for="callaborcardexpirydate" class="col-sm-1 text-right control-label col-form-label">تاريخ إنتهاء بطاقة العمل</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="callaborcardexpirydate" name="callaborcardexpirydate" placeholder="mm/dd/yyyy" value="@Model.LaborCardExpiryDate">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="txtemiratesIDnumber" class="col-sm-1 text-right control-label col-form-label">رقم الهوية الإماراتية</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtemiratesIDnumber" name="txtemiratesIDnumber" placeholder="Emirates ID number Here" value="@Model.EmiratesIDNumber">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="calemiratesIDexpirydate" class="col-sm-1 text-right control-label col-form-label">تاريخ إنتهاءالهوية الإماراتية</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker-autoclose datepicker" id="calemiratesIDexpirydate" name="calemiratesIDexpirydate" placeholder="mm/dd/yyyy" value="@Model.EmiratedExpiryDate"> 
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="flfrontfaceforEmiratesID" class="col-sm-1 text-right control-label col-form-label">صورة الواجهة الأمامية للهوية</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="flfrontfaceforEmiratesID" name="flfrontfaceforEmiratesID" required>
+                            <label class="custom-file-label" for="flfrontfaceforEmiratesID">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <img style="display:none" height="100" width="100" src="@Model.FrontFaceforEmiratesID" />
+                        </div>
+                    </div>
+
+                    <label for="flbackfaceforEmiratesID" class="col-sm-1 text-right control-label col-form-label">صورة الواجهة الخلفية للهوية</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="flbackfaceforEmiratesID" name="flbackfaceforEmiratesID" required>
+                            <label class="custom-file-label" for="flbackfaceforEmiratesID">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            <img style="display:none" height="100" width="100" src="@Model.BackfaceForEmiratesID" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="border-top">
+                <div class="card-body row" style="position: relative;">
+                    <div class="col-md-5">
+
+                    </div>
+                    <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-primary col-md-2" style="right: 15px; ">حفظ</button>
+                    <div class="col-md-5">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        @*}*@
+    </div>
+</div>
+
+<script src="~/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+    $(document).ready(function () {
+        $("#ddlnationality").val(model.Nationality);
+        $('.datepicker').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+    })
+    $("#btnSubmit").click(function (e) {
+        debugger;
+        e.preventDefault();
+        var flcopyofpassport = $('#flcopyofpassport').get(0).files[0];
+        var flresidencecopy = $('#flresidencecopy').get(0).files[0];
+        var flfrontfaceforEmiratesID = $('#flfrontfaceforEmiratesID').get(0).files[0];
+        var flbackfaceforEmiratesID = $('#flbackfaceforEmiratesID').get(0).files[0];
+        var formData = new FormData();
+        formData.append("EmployeeId", $("#EmployeeId").val());
+        formData.append('Name', $("#txtfname").val());
+        formData.append('Nationality', $("#ddlnationality").val());
+        formData.append('Passportnumber', $("#txtpassportnumber").val());
+        formData.append('Placeofissue', $("#txtplaceofissue").val());
+        formData.append('Dateofissue', $("#caldateofissue").val());
+        formData.append('Expirydate', $("#calexpirydate").val());
+        formData.append('Bob', $("#calbob").val());
+        formData.append('copyofpassport', flcopyofpassport);
+        formData.append('Residencenumber', $("#txtresidencenumber").val());
+        formData.append('Unifiednumber', $("#txtunifiednumber").val());
+        formData.append('Dateofissuance', $("#caldateofissuance").val());
+        formData.append('Expirationofresidence', $("#calexpirationofresidence").val());
+        formData.append('Residencecopy', flresidencecopy);
+        formData.append('Laborcardnumber', $("#txtlaborcardnumber").val());
+        formData.append('Laborcardexpirydate', $("#callaborcardexpirydate").val());
+        formData.append('EmiratesIDnumber', $("#txtemiratesIDnumber").val());
+        formData.append('EmiratesIDexpirydate', $("#calemiratesIDexpirydate").val());
+        formData.append('FrontfaceforEmiratesID', flfrontfaceforEmiratesID);
+        formData.append('BackfaceforEmiratesID', flbackfaceforEmiratesID);
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            url: "/Employees/Save/",
+            data: formData,
+            processData: false,
+            success: function (Data) {
+                $("#myModal").modal("hide");
+                $('.EmpForm').html("");
+                location.reload();
+            },
+            Error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    });
+</script>

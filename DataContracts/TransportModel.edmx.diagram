@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7e38dbd0bb94063bb70f06527ed4c99" Name="Diagram1" ZoomLevel="94" >
+        <EntityTypeShape EntityType="TransportModel.Bond" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TransportModel.Clients" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TransportModel.Custmers" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TransportModel.Employee" Width="2" PointX="5.125" PointY="0.5" />
+        <EntityTypeShape EntityType="TransportModel.Invoice" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TransportModel.Truck" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TransportModel.Users" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="TransportModel.RefDetails" Width="1.5" PointX="2.25" PointY="2" />
+        <EntityTypeShape EntityType="TransportModel.RefHeader" Width="1.5" PointX="2" PointY="5" />
+        <AssociationConnector Association="TransportModel.FK_Nationality" />
+        <AssociationConnector Association="TransportModel.FK_PlaceOfIssue" />
+        <AssociationConnector Association="TransportModel.FK_Position" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

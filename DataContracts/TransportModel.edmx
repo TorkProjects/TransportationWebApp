@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Bond">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BondNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BondDate" Type="datetime" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="AmountNo" Type="money" />
+          <Property Name="AmountText" Type="nvarchar" MaxLength="50" />
+          <Property Name="BondType" Type="int" />
+          <Property Name="CheckNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExchangeOfficeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="ClientType" Type="int" />
+          <Property Name="AuthorizedPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="TelNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Custmers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Type" Type="int" />
+          <Property Name="AuthorizaedPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaxNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Backup" Type="bit" />
+          <Property Name="BackupDate" Type="datetime" />
+          <Property Name="ClientId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Nationality" Type="int" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="Placeofissue" Type="int" />
+          <Property Name="DateofIssue" Type="datetime" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="CopyofPassport" Type="nvarchar" MaxLength="500" />
+          <Property Name="ResidenceNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="UnifiedNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="DateofResidence" Type="datetime" />
+          <Property Name="ExpirationofResidence" Type="datetime" />
+          <Property Name="ResidenceCopy" Type="nvarchar" MaxLength="500" />
+          <Property Name="LaborCardNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="LaborCardExpiryDate" Type="datetime" />
+          <Property Name="EmiratesIDNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="EmiratedExpiryDate" Type="datetime" />
+          <Property Name="FrontFaceforEmiratesID" Type="nvarchar" MaxLength="500" />
+          <Property Name="BackfaceForEmiratesID" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="AmountNo" Type="money" />
+          <Property Name="AmountText" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceType" Type="int" />
+          <Property Name="CheckNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExchangeOfficeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_RefDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeaderID" Type="int" />
+          <Property Name="RefValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_RefHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeaderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Truck">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleOwner" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehiclePlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleDriverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleSerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleEngineNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleChassisNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehiclePlateClass" Type="int" />
+          <Property Name="VehicleCountryMade" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleOwnershipCopy" Type="nvarchar" MaxLength="500" />
+          <Property Name="VehicleOwnershipExpiryDate" Type="datetime" />
+          <Property Name="VehicleModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="ClientId" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_Nationality">
+          <End Role="tbl_RefDetails" Type="Self.tbl_RefDetails" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Nationality" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaceOfIssue">
+          <End Role="tbl_RefDetails" Type="Self.tbl_RefDetails" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Placeofissue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position">
+          <End Role="tbl_RefDetails" Type="Self.tbl_RefDetails" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TransportModelStoreContainer">
+          <EntitySet Name="tbl_Bond" EntityType="Self.tbl_Bond" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Clients" EntityType="Self.tbl_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Custmers" EntityType="Self.tbl_Custmers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Invoice" EntityType="Self.tbl_Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RefDetails" EntityType="Self.tbl_RefDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RefHeader" EntityType="Self.tbl_RefHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Truck" EntityType="Self.tbl_Truck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Nationality" Association="Self.FK_Nationality">
+            <End Role="tbl_RefDetails" EntitySet="tbl_RefDetails" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaceOfIssue" Association="Self.FK_PlaceOfIssue">
+            <End Role="tbl_RefDetails" EntitySet="tbl_RefDetails" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position" Association="Self.FK_Position">
+            <End Role="tbl_RefDetails" EntitySet="tbl_RefDetails" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TransportEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Bonds" EntityType="TransportModel.Bond" />
+          <EntitySet Name="Clients" EntityType="TransportModel.Clients" />
+          <EntitySet Name="Custmers" EntityType="TransportModel.Custmers" />
+          <EntitySet Name="Employees" EntityType="TransportModel.Employee" />
+          <EntitySet Name="Invoices" EntityType="TransportModel.Invoice" />
+          <EntitySet Name="Trucks" EntityType="TransportModel.Truck" />
+          <EntitySet Name="Users" EntityType="TransportModel.Users" />
+          <EntitySet Name="RefDetails" EntityType="TransportModel.RefDetails" />
+          <EntitySet Name="RefHeaders" EntityType="TransportModel.RefHeader" />
+          <AssociationSet Name="FK_Nationality" Association="TransportModel.FK_Nationality">
+            <End Role="tbl_RefDetails" EntitySet="RefDetails" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaceOfIssue" Association="TransportModel.FK_PlaceOfIssue">
+            <End Role="tbl_RefDetails" EntitySet="RefDetails" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position" Association="TransportModel.FK_Position">
+            <End Role="tbl_RefDetails" EntitySet="RefDetails" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bond">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BondNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BondDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="AmountNo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BondType" Type="Int32" />
+          <Property Name="CheckNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangeOfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ClientType" Type="Int32" />
+          <Property Name="AuthorizedPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Custmers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="AuthorizaedPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Backup" Type="Boolean" />
+          <Property Name="BackupDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Nationality" Type="Int32" />
+          <Property Name="PassportNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Placeofissue" Type="Int32" />
+          <Property Name="DateofIssue" Type="DateTime" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="CopyofPassport" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ResidenceNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UnifiedNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DateofResidence" Type="DateTime" Precision="3" />
+          <Property Name="ExpirationofResidence" Type="DateTime" Precision="3" />
+          <Property Name="ResidenceCopy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LaborCardNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LaborCardExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="EmiratesIDNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EmiratedExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="FrontFaceforEmiratesID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BackfaceForEmiratesID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RefNationality" Relationship="TransportModel.FK_Nationality" FromRole="Employee" ToRole="tbl_RefDetails" />
+          <NavigationProperty Name="RefPlaceOfIssue" Relationship="TransportModel.FK_PlaceOfIssue" FromRole="Employee" ToRole="tbl_RefDetails" />
+          <NavigationProperty Name="RefPosition" Relationship="TransportModel.FK_Position" FromRole="Employee" ToRole="tbl_RefDetails" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="AmountNo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceType" Type="Int32" />
+          <Property Name="CheckNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangeOfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehiclePlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleDriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleSerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleEngineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleChassisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehiclePlateClass" Type="Int32" />
+          <Property Name="VehicleCountryMade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleOwnershipCopy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleOwnershipExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="VehicleModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="ClientId" Type="Int16" />
+        </EntityType>
+        <EntityType Name="RefDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeaderID" Type="Int32" />
+          <Property Name="RefValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <NavigationProperty Name="tbl_Employee" Relationship="TransportModel.FK_Nationality" FromRole="tbl_RefDetails" ToRole="Employee" />
+          <NavigationProperty Name="tbl_Employee1" Relationship="TransportModel.FK_PlaceOfIssue" FromRole="tbl_RefDetails" ToRole="Employee" />
+          <NavigationProperty Name="tbl_Employee2" Relationship="TransportModel.FK_Position" FromRole="tbl_RefDetails" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="RefHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Nationality">
+          <End Type="TransportModel.RefDetails" Role="tbl_RefDetails" Multiplicity="0..1" />
+          <End Type="TransportModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Nationality" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaceOfIssue">
+          <End Type="TransportModel.RefDetails" Role="tbl_RefDetails" Multiplicity="0..1" />
+          <End Type="TransportModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Placeofissue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position">
+          <End Type="TransportModel.RefDetails" Role="tbl_RefDetails" Multiplicity="0..1" />
+          <End Type="TransportModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_RefDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TransportModelStoreContainer" CdmEntityContainer="TransportEntities" >
+          <EntitySetMapping Name="Bonds">
+            <EntityTypeMapping TypeName="TransportModel.Bond">
+              <MappingFragment StoreEntitySet="tbl_Bond">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ExchangeOfficeName" ColumnName="ExchangeOfficeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="CheckNo" ColumnName="CheckNo" />
+                <ScalarProperty Name="BondType" ColumnName="BondType" />
+                <ScalarProperty Name="AmountText" ColumnName="AmountText" />
+                <ScalarProperty Name="AmountNo" ColumnName="AmountNo" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="BondDate" ColumnName="BondDate" />
+                <ScalarProperty Name="BondNo" ColumnName="BondNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="TransportModel.Clients">
+              <MappingFragment StoreEntitySet="tbl_Clients">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="TelNumber" ColumnName="TelNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AuthorizedPerson" ColumnName="AuthorizedPerson" />
+                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Custmers">
+            <EntityTypeMapping TypeName="TransportModel.Custmers">
+              <MappingFragment StoreEntitySet="tbl_Custmers">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="BackupDate" ColumnName="BackupDate" />
+                <ScalarProperty Name="Backup" ColumnName="Backup" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="AuthorizaedPerson" ColumnName="AuthorizaedPerson" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="TransportModel.Employee">
+              <MappingFragment StoreEntitySet="tbl_Employee">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="BackfaceForEmiratesID" ColumnName="BackfaceForEmiratesID" />
+                <ScalarProperty Name="FrontFaceforEmiratesID" ColumnName="FrontFaceforEmiratesID" />
+                <ScalarProperty Name="EmiratedExpiryDate" ColumnName="EmiratedExpiryDate" />
+                <ScalarProperty Name="EmiratesIDNumber" ColumnName="EmiratesIDNumber" />
+                <ScalarProperty Name="LaborCardExpiryDate" ColumnName="LaborCardExpiryDate" />
+                <ScalarProperty Name="LaborCardNumber" ColumnName="LaborCardNumber" />
+                <ScalarProperty Name="ResidenceCopy" ColumnName="ResidenceCopy" />
+                <ScalarProperty Name="ExpirationofResidence" ColumnName="ExpirationofResidence" />
+                <ScalarProperty Name="DateofResidence" ColumnName="DateofResidence" />
+                <ScalarProperty Name="UnifiedNumber" ColumnName="UnifiedNumber" />
+                <ScalarProperty Name="ResidenceNumber" ColumnName="ResidenceNumber" />
+                <ScalarProperty Name="CopyofPassport" ColumnName="CopyofPassport" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="DateofIssue" ColumnName="DateofIssue" />
+                <ScalarProperty Name="Placeofissue" ColumnName="Placeofissue" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="TransportModel.Invoice">
+              <MappingFragment StoreEntitySet="tbl_Invoice">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ExchangeOfficeName" ColumnName="ExchangeOfficeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="CheckNo" ColumnName="CheckNo" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="AmountText" ColumnName="AmountText" />
+                <ScalarProperty Name="AmountNo" ColumnName="AmountNo" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trucks">
+            <EntityTypeMapping TypeName="TransportModel.Truck">
+              <MappingFragment StoreEntitySet="tbl_Truck">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+                <ScalarProperty Name="VehicleOwnershipExpiryDate" ColumnName="VehicleOwnershipExpiryDate" />
+                <ScalarProperty Name="VehicleOwnershipCopy" ColumnName="VehicleOwnershipCopy" />
+                <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="VehicleCountryMade" ColumnName="VehicleCountryMade" />
+                <ScalarProperty Name="VehiclePlateClass" ColumnName="VehiclePlateClass" />
+                <ScalarProperty Name="VehicleChassisNo" ColumnName="VehicleChassisNo" />
+                <ScalarProperty Name="VehicleEngineNumber" ColumnName="VehicleEngineNumber" />
+                <ScalarProperty Name="VehicleSerialNumber" ColumnName="VehicleSerialNumber" />
+                <ScalarProperty Name="VehicleDriverName" ColumnName="VehicleDriverName" />
+                <ScalarProperty Name="VehiclePlateNumber" ColumnName="VehiclePlateNumber" />
+                <ScalarProperty Name="VehicleOwner" ColumnName="VehicleOwner" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TransportModel.Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefDetails">
+            <EntityTypeMapping TypeName="TransportModel.RefDetails">
+              <MappingFragment StoreEntitySet="tbl_RefDetails">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RefValue" ColumnName="RefValue" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefHeaders">
+            <EntityTypeMapping TypeName="TransportModel.RefHeader">
+              <MappingFragment StoreEntitySet="tbl_RefHeader">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="HeaderName" ColumnName="HeaderName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

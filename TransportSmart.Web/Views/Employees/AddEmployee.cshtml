@@ -1,0 +1,298 @@
+﻿@model IEnumerable<DataContracts.Employee>
+
+
+<div class="container-fluid" dir="rtl">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:right">كشف الموظفين</h5>
+                    <div class="row" style="padding:1.25rem">
+                        <button type="button" class="btn btn-dark btn-md col-md-3" onclick="EmpPartial(0)"><i class="m-r-10 mdi mdi-account-plus"></i> إضافة موظف </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="zero_config" dir="rtl" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>   رقم الموظف     </th>
+                                    <th> الاسم الكامل</th>
+                                    <th> الجنسية            </th>
+                                    <th> المهنة             </th>
+                                    <th> رقم الإقامة         </th>
+                                    <th> إنتهاء الإقامة      </th>
+                                    <th> رقم البطاقة        </th>
+                                    <th> إنتهاء البطاقة    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="page-breadcrumb" dir="rtl">
+    <div id="myModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <button type="button" onclick="HideModal()" class="close col-2" data-dismiss="modal" aria-label="Close">
+                        <span id="close" aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="card-title col-8" style="text-align:center">أضافة موظف</h4>
+                    <h4 class="card-title col-2" style="text-align:center"></h4>
+                </div>
+
+                <div class="modal-body EmpForm">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<script src="~/assets/libs/select2/dist/js/select2.full.min.js"></script>
+<script src="~/assets/libs/select2/dist/js/select2.min.js"></script>
+<script src="~/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+<script src="~/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+<script src="~/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+<script src="~/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+<script src="~/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="~/assets/libs/quill/dist/quill.min.js"></script>
+<script src="~/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<script src="~/assets/extra-libs/DataTables/datatables.min.js"></script>
+<script src="~/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+
+<script>
+
+    $.ajax({
+        type: "POST",
+        url: "/Employees/GetListOfEmployee/",
+        contentType: "application/json",
+        datatype: "json",
+        async: false,
+        success: function (response) {
+            debugger;
+            if (response.Success) {
+                var oTable = $('#zero_config').DataTable({
+                    destroy: true,
+                    data: response.listOfEmployee,
+                    dom: '<i<t><"pull-right"B>>',
+                    "lengthChange": false,
+                    iDisplayLength: -1,
+                    "columns": [
+                        { "data": "EmployeeId" },
+                        { "data": "Name" },
+                        { "data": "NationalityID" },
+                        {
+                            "data": "PositionID",
+                            "render": function (jsondata) {
+                                switch(jsondata) {
+                                    case 0:
+                                        return "";
+                                        break;
+                                      case 1:
+                                         return "سائق";
+                                        break;
+                                     case 2:
+                                         return "مندوب مشتريات";
+                                        break;
+                                     case 3:
+                                         return "مندوب مبيعات";
+                                        break;
+
+                                     case 4:
+                                         return "كاتب ملفات";
+                                        break;
+
+                                     case 5:
+                                         return "كاتب حسابات";
+                                        break;
+
+                                      case 6:
+                                         return "مدير إداري";
+                                        break;
+
+                                     case 7:
+                                         return "محاسب";
+                                        break;
+                                      default:
+                                       return "";
+                                    }
+                            }
+                        },
+                        { "data": "ResidenceNumber" },
+                        {
+
+                            "data": "EmiratedExpiryDate",
+                            'render': function (jsonDate) {
+
+                               
+
+                                if (jsonDate != null) {
+                                var date = new Date(parseInt(jsonDate.substr(6)));
+                                var month = date.getMonth() + 1;
+                                return date.getDate() + "/" + month + "/" + date.getFullYear();
+                                }
+
+                            }
+                        },
+                        { "data": "LaborCardNumber" },
+                        {
+                            "data": "LaborCardExpiryDate",
+                            'render': function (jsonDate) {
+                                if (jsonDate != null) {
+                                    var date = new Date(parseInt(jsonDate.substr(6)));
+                                    var month = date.getMonth() + 1;
+                                    return date.getDate() + "/" + month + "/" + date.getFullYear();
+                                }
+                            }
+                        },
+                        {
+                            "data": "data",
+                            render: function (data, type, row) {
+                                var string = "<a id='lnkEdit' onclick=EmpPartial(" + row.EmployeeId+") ><span class='fa fa-edit'></span> </a> ";
+                              //  if (row.IsActive) {
+                                    string += "<a id='lnkDelete'  onclick=DeleteEmp("+row.EmployeeId+")><span class='fa fa-trash-o'>X</span></a>";
+                               // }
+                                return string;
+                            }
+                        }
+                    ],
+                    "searching": true
+                });
+
+                $('#myInputTextSearchField').keyup(function () {
+                    oTable.search($(this).val()).draw();
+                });
+
+            } else {
+                console.log(response.ExceptionMessage);
+            }
+        }
+    });
+
+        $("#btnSubmit").click(function () {
+            debugger;
+            var flcopyofpassport = $('#flcopyofpassport').get(0).files[0];
+            var flresidencecopy = $('#flresidencecopy').get(0).files[0];
+            var flfrontfaceforEmiratesID = $('#flfrontfaceforEmiratesID').get(0).files[0];
+            var flbackfaceforEmiratesID = $('#flbackfaceforEmiratesID').get(0).files[0];
+            var formData = new FormData();
+            formData.append('Name', $("#txtfname").val());
+            formData.append('Nationality', $("#ddlnationality").val());
+            formData.append('Passportnumber', $("#txtpassportnumber").val());
+            formData.append('Placeofissue', $("#txtplaceofissue").val());
+            formData.append('Dateofissue', $("#caldateofissue").val());
+            formData.append('Expirydate', $("#calexpirydate").val());
+            formData.append('Bob', $("#calbob").val());
+            formData.append('copyofpassport', flcopyofpassport);
+            formData.append('Residencenumber', $("#txtresidencenumber").val());
+            formData.append('Unifiednumber', $("#txtunifiednumber").val());
+            formData.append('Dateofissuance', $("#caldateofissuance").val());
+            formData.append('Expirationofresidence', $("#calexpirationofresidence").val());
+            formData.append('Residencecopy', flresidencecopy);
+            formData.append('Laborcardnumber', $("#txtlaborcardnumber").val());
+            formData.append('Laborcardexpirydate', $("#callaborcardexpirydate").val());
+            formData.append('EmiratesIDnumber', $("#txtemiratesIDnumber").val());
+            formData.append('EmiratesIDexpirydate', $("#calemiratesIDexpirydate").val());
+            formData.append('FrontfaceforEmiratesID', flfrontfaceforEmiratesID);
+            formData.append('BackfaceforEmiratesID', flbackfaceforEmiratesID);
+            $.ajax({
+                type: "POST",
+                contentType: false,
+                url: "/Employees/Save/",
+                data: formData,
+                processData: false,
+                success: function (Data) {
+
+                },
+                Error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        });
+
+
+        jQuery('#zero_config').DataTable().makeEditable();
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function () {
+            //
+            // Dear reader, it's actually very easy to initialize MiniColors. For example:
+            //
+            //  $(selector).minicolors();
+            //
+            // The way I've done it below is just for the demo, so don't get confused
+            // by it. Also, data- attributes aren't supported at this time...they're
+            // only used for this demo.
+            //
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+    });
+
+    function EmpPartial(empid) {
+        $.ajax({
+
+
+            url: '@Url.Action("EmpForm")?EmpId=' + empid    ,
+            type: 'GET',
+            error: function (xhr) {
+                alert('Error: ' + xhr.statusText);
+            },
+            success: function (result) {
+                debugger;
+                $("#myModal").modal("show");
+                $('.EmpForm').html(result);
+            }
+            });
+    }
+
+    function DeleteEmp(empid) {
+        if (confirm("Do you really want to delete Employee?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteEmp")?EmpId=' + empid,
+                type: 'GET',
+                error: function (xhr) {
+                    alert('Error: ' + xhr.statusText);
+                },
+                success: function (result) {
+                    if (result) {
+                        alert("Delete Employee Successfully");
+                        location.reload();
+                    }
+                    else {
+                        alert("There is some problem.");
+                    }
+                }
+            });
+        }
+    }
+
+
+
+
+</script>

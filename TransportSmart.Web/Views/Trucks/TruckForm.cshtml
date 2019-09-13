@@ -1,0 +1,209 @@
+﻿@model DataContracts.Truck
+
+<link href="~/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+<div class="col-12">
+    <div class="card">
+        <form class="form-horizontal">
+            
+
+            <div class="card-body">
+                <div class="p-2 ">
+                    <img style="display: block;margin-left: auto;margin-right: auto" src="../../assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle">
+                </div>
+
+                <h4 class="card-title" style="text-align:right">معلومات المركبة</h4>
+                <div class="form-group row">
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">رقم اللوحة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtboxPlateNumber" placeholder="" value="@Model.VehiclePlateNumber">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">إسم السائق</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleDriverName" placeholder="" value="@Model.VehicleDriverName">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">إسم المالك</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtboxVehicleOwner" placeholder="" value="@Model.VehicleOwner">
+                    </div>
+
+                    
+
+
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">الرقم المسلسل</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleSerialNumber" placeholder="" value="@Model.VehicleSerialNumber">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">صنف اللوحة</label>
+                    <div class="col-sm-3">
+                        <select class="select2 form-control custom-select" id="ddlPlateType" name="ddlPlateType" style="width: 100%; height:36px;">
+                            <option value="0">حدد صنف اللوحة</option>
+                            <option value="1">نقل عام</option>
+                            <option value="2">خصوصي</option>
+                            <option value="3">مقطورة</option>
+                        </select>
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">رقم الشاصيه</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtboxVehicleChassisNo" placeholder="" value="@Model.VehicleChassisNo">
+                    </div>
+
+                   
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">رقم المحرك</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleEngineNumber" placeholder="" value="@Model.VehicleEngineNumber">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">لون المركبة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleColor" placeholder="" value="@Model.VehicleColor">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">نوع المركبة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleType" placeholder="" value="@Model.VehicleType">
+                    </div>
+
+                    
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">بلد الصنع</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleCountryMade" placeholder="" value="@Model.VehicleCountryMade">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">موديل المركبة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleModel" placeholder="" value="@Model.VehicleModel">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">تاريخ إنتهاء الملكية</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtBoxVehicleOwnershipExpiryDate" placeholder="" value="@Model.VehicleOwnershipExpiryDate">
+                    </div>
+
+                    <label for="lname" class="col-sm-1 text-right control-label col-form-label">صورة ملكية المركبة</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="CopyOfCarLicence" required>
+                            <label class="custom-file-label" for="CopyOfCarLicence">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                        </div>
+                    </div>
+                </div>
+                @*<h4 class="card-title" style="text-align:right">معلومات المقطورة</h4>
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">رقم المقطورة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="fname" placeholder="">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">نوع المقطورة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="fname" placeholder="">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">لون المقطورة</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="fname" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">بلد الصنع </label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="fname" placeholder="">
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">تاريخ إنتهاء الملكية</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="datepicker-autoclose" placeholder="mm/dd/yyyy">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="fname" class="col-sm-1 text-right control-label col-form-label">صورة ملكية المقطورة</label>
+                    <div class="col-sm-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                        </div>
+                    </div>
+
+                </div>*@
+
+
+            </div>
+            <div class="border-top">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                        </div>
+                        <button id="btnSubmit" name="btnSubmit" type="button" class="btn btn-primary col-md-2">حفظ</button>
+                        <div class="col-md-5">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+     $("#btnSubmit").click(function (e) {
+        debugger;
+        var copyOfCarLicence = $('#CopyOfCarLicence').get(0).files[0];
+        var formData = new FormData();
+        formData.append("PlateNumber", $("#txtboxPlateNumber").val());
+        formData.append('txtBoxVehicleDriverName', $("#txtBoxVehicleDriverName").val());
+        formData.append('VehicleOwner', $("#txtboxVehicleOwner").val());
+        formData.append('VehicleSerialNumber', $("#txtBoxVehicleSerialNumber").val());
+        formData.append('ddlPlateType', $("#ddlPlateType").val());
+        formData.append('VehicleChassisNo', $("#txtboxVehicleChassisNo").val());
+        formData.append('VehicleEngineNumber', $("#txtBoxVehicleEngineNumber").val());
+        formData.append('VehicleColor', $("#txtBoxVehicleColor").val());
+        formData.append('VehicleType', $("#txtBoxVehicleType").val());
+        formData.append('VehicleCountryMade', $("#txtBoxVehicleCountryMade").val());
+        formData.append('VehicleModel', $("#txtBoxVehicleModel").val());
+        formData.append('VehicleOwnershipExpiryDate', $("#txtBoxVehicleOwnershipExpiryDate").val());
+        formData.append('copyOfCarLicencePath', copyOfCarLicence);
+      
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            url: "/Trucks/Save/",
+            data: formData,
+            processData: false,
+            success: function (Data) {
+                $("#myModal").modal("hide");
+                $('.TruckForm').html("");
+                location.reload();
+            },
+            Error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    });
+</script>
